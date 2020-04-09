@@ -1,8 +1,11 @@
 #!/bin/bash
 
 projRoot="$(git rev-parse --show-toplevel)"
-output="${projRoot}/backend/swagger-codegen/output/"
+output="${projRoot}/output/"
 swaggerFile="$1"
+
+echo $projRoot
+
 
 if [ -z "$swaggerFile" ]; then
 	echo "Usage: ./generate-stub.sh <swaggerFile.yml>"
@@ -29,6 +32,6 @@ fi
 
 openapi-generator generate \
 	--generator-name nodejs-express-server \
-	--output "${projRoot}/backend/swagger-codegen/output/" \
+	--output "${projRoot}/output/" \
 	--input-spec "$swaggerFile"
 		
